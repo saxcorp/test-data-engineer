@@ -1,0 +1,67 @@
+plugins {
+    id 'java'
+    id 'scala'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+    id 'groovy'
+    id 'idea'
+}
+
+apply plugin: 'java'
+apply plugin: 'scala'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+repositories {
+    jcenter()
+    mavenLocal()
+    mavenCentral()
+    maven {
+        url "https://oss.sonatype.org/content/repositories/snapshots"
+    }
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation "org.scala-lang:scala-library:${scalaFullVersion}"
+    implementation "org.scala-lang:scala-reflect:${scalaFullVersion}"
+    implementation "org.scala-lang:scala-compiler:${scalaFullVersion}"
+
+    implementation "org.apache.spark:spark-sql_${scalaMinorVersion}:${sparkFullVersion}"
+    implementation "org.apache.spark:spark-core_${scalaMinorVersion}:${sparkFullVersion}"
+
+    implementation "commons-io:commons-io:2.5"
+    implementation "com.github.scopt:scopt_${scalaMinorVersion}:4.0.1"
+    implementation "com.typesafe:config:1.4.1"
+
+    testImplementation "org.scalatest:scalatest_${scalaMinorVersion}:3.2.9"
+    testImplementation "org.scalatest:scalatest-funsuite_${scalaMinorVersion}:3.2.9"
+    testImplementation "org.scalatestplus:junit-4-13_${scalaMinorVersion}:3.2.9.0"
+}
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': title,
+                   'Implementation-Version': project.version,
+                   'Main-Class': mainClassFile
+    }
+    zip64 true
+}
+
+shadowJar {
+    archiveClassifier.set('')
+    dependencies {
+        exclude( dependency('org.scala-lang:.*:.*') )
+        exclude( dependency('org.apache.spark:.*:.*') )
+        exclude( dependency('org.scalatest:.*:.*') )
+    }
+    exclude 'application.properties'
+}
+
+test {
+//    useJUnitPlatform()
+//    testLogging {
+//        exceptionFormat = 'full'
+//        showStackTraces = "true"
+//    }
+}

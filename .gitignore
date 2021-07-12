@@ -1,0 +1,21 @@
+/outputs/
+metastore_db/*
+build/
+# intellij idea
+*.log
+*.iml
+*.ipr
+*.iws
+.idea
+
+# mac
+.DS_Store
+
+# other?
+.history
+.scala_dependencies
+.cache-main
+
+!gradle-wrapper.jar
+.gradletasknamecache
+.gradle

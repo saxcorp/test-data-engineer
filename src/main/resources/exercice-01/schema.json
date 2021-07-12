@@ -1,0 +1,17 @@
+{
+  "type": "struct",
+  "fields": [
+    {
+      "name": "guid",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    },
+    {
+      "name": "poi",
+      "type": "string",
+      "nullable": true,
+      "metadata": {}
+    }
+  ]
+}

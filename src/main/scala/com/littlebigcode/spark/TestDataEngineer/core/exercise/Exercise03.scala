@@ -1,21 +1,33 @@
-package com.littlebigcode.spark.TestDataEngineer.core.exercises
+package com.littlebigcode.spark.TestDataEngineer.core.exercise
 
 import com.littlebigcode.spark.TestDataEngineer.model.AppGlobalConfig
 import org.apache.spark.sql.{DataFrame, SaveMode}
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions.{col, row_number}
 
-object Exercice3 {
+object Exercise03 {
+  /**
+   *
+   * @param appGlobalConfig
+   * @param dfExercise2
+   * @return
+   */
   def produceExercise3a(appGlobalConfig: AppGlobalConfig, dfExercise2: DataFrame) = {
     val res = dfExercise2.orderBy(col("TOTAL_CLIENTS").desc).limit(3)
 
     res.write
       .mode(SaveMode.Overwrite)
-      .parquet(s"${appGlobalConfig.hdfsExercice03OutputDir}/exercise3a")
+      .parquet(s"${appGlobalConfig.hdfsExercice03OutputDir}/exercise03a")
 
     res
   }
 
+  /**
+   *
+   * @param appGlobalConfig
+   * @param dfExercise2
+   * @return
+   */
   def produceExercise3b(appGlobalConfig: AppGlobalConfig, dfExercise2: DataFrame) = {
     val windowSpec = Window.partitionBy("NMPTF").orderBy(col("NB_CONTRATS").desc)
 
@@ -26,7 +38,7 @@ object Exercice3 {
 
     res.write
       .mode(SaveMode.Overwrite)
-      .parquet(s"${appGlobalConfig.hdfsExercice03OutputDir}/exercise3b")
+      .parquet(s"${appGlobalConfig.hdfsExercice03OutputDir}/exercise03b")
 
     res
   }

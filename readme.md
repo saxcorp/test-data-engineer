@@ -35,5 +35,4 @@ Pour chaque exercice, penser au fait que le code développé doit pouvoir être 
 
 - Objectif(s):
   - sortir, pour chaque portefeuille, le top 3 sur base du nombre de clients
-  - (sortir, pour chaque portefeuille, le top 3 de client sur la base du nombre de contrat)
  

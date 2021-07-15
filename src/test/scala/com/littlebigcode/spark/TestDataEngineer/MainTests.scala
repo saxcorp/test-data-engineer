@@ -6,33 +6,25 @@ import org.scalatestplus.junit.JUnitRunner
 
 @RunWith(classOf[JUnitRunner])
 class MainTests extends AnyFunSuite with SharedSparkContext {
-  test("produce exercice1") {
-    val args = List("--produce", "exercice1")
+  cleanDataDir()
+
+  test("produce exercise01") {
+    val args = List("--produce", "exercise01")
     runAppTestMode(args)
   }
 
-  test("produce exercise2v1_FilterType_EQUAL") {
-    val args = List("--produce", "exercise2v1_FilterType_EQUAL")
+  test("produce exercise02") {
+    val args = List("--produce", "exercise02")
     runAppTestMode(args)
   }
 
-  test("produce exercise2v2_FilterType_SUPERIOR") {
-    val args = List("--produce", "exercise2v2_FilterType_SUPERIOR")
+  test("produce exercise03a") {
+    val args = List("--produce", "exercise03a")
     runAppTestMode(args)
   }
 
-  test("produce exercise2v3_FilterType_EQUAL_OR_SUPERIOR") {
-    val args = List("--produce", "exercise2v3_FilterType_EQUAL_OR_SUPERIOR")
-    runAppTestMode(args)
-  }
-
-  test("produce exercise3v1a") {
-    val args = List("--produce", "exercise3v1a")
-    runAppTestMode(args)
-  }
-
-  test("produce exercise3v1b") {
-    val args = List("--produce", "exercise3v1b")
+  test("produce exercise03b") {
+    val args = List("--produce", "exercise03b")
     runAppTestMode(args)
   }
 }

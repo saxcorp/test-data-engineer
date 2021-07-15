@@ -5,6 +5,11 @@ import scopt.OParser
 case class InputArgs(dataProductionType: String = "")
 
 object InputArgsBuilder {
+  /**
+   *
+   * @param args
+   * @return
+   */
   def build(args: Array[String]) = {
 
     OParser.parse(getInputArgsParser, args, InputArgs()) match {

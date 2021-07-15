@@ -1,4 +1,4 @@
-package com.littlebigcode.spark.TestDataEngineer.core.exercises
+package com.littlebigcode.spark.TestDataEngineer.core.exercise
 
 import com.littlebigcode.spark.TestDataEngineer.common.Tools.getStructTypeFromClassPathJson
 import com.littlebigcode.spark.TestDataEngineer.model.AppGlobalConfig
@@ -6,7 +6,7 @@ import org.apache.spark.sql.{SaveMode, SparkSession}
 import org.apache.spark.sql.functions.{col, from_json, regexp_replace, to_date, udf}
 import org.apache.spark.sql.types.{StringType, StructType, TimestampType}
 
-object Exercice1 {
+object Exercise01 {
   val COLUMN_TO_EXCLUDE = Seq("JSON", "TRIM_DOUBLE_QUOTE_JSON", "PARSED_JSON")
   val trimDoubleQuoteFunc: String => String = _.replace("\"{", "{").replace("}\"", "}")
   val trimDoubleQuoteUDF = udf(trimDoubleQuoteFunc)
@@ -25,6 +25,12 @@ object Exercice1 {
     .add("DATE_NAISS", StringType, nullable = true)
     .add("JSON", StringType, nullable = true)
 
+  /**
+   *
+   * @param spark
+   * @param appGlobalConfig
+   * @return
+   */
   def produceExercise1(spark: SparkSession, appGlobalConfig: AppGlobalConfig) = {
     val df = spark.read
       .option("header", "true")

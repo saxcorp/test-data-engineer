@@ -1,14 +1,15 @@
 package com.littlebigcode.spark.TestDataEngineer.model
 
 /**
+ * Décrit toutes les variables globales déclarable dans le fichier de configuration de l'application '''application.conf'''.
  *
- * @param env
- * @param hdfsRootDataDir
- * @param hdfsExercice01OutputDir
- * @param hdfsExercice02OutputDir
- * @param hdfsExercice03OutputDir
- * @param hdfsExercice01InputCsvPath
- * @param hdfsExercice0203InputCampagneParquetPath
+ * @param env Environement applicatif (DEV/UAT/PRD)
+ * @param hdfsRootDataDir Dossier HDFS racine contenant les données produites par l'application.
+ * @param hdfsExercice01OutputDir Dossier HDFS racine contenant les données produites par l'exercice 01.
+ * @param hdfsExercice02OutputDir Dossier HDFS racine contenant les données produites par l'exercice 02.
+ * @param hdfsExercice03OutputDir Dossier HDFS racine contenant les données produites par l'exercice 03.
+ * @param hdfsExercice01InputCsvPath Localisation HDFS du fichier csv d'entré pour l'exercice 01.
+ * @param hdfsExercice0203InputCampagneParquetPath Localisation HDFS du dossier d'entrée contenant les parquets pour les exercices 02 et 03.
  */
 case class AppGlobalConfig(
                             env: String,

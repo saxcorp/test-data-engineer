@@ -23,10 +23,12 @@ object Main {
   }
 
   /**
+   * Orchestre la production des 4 sources différentes sources de données (''exercise01/exercise02/exercise03a/exercise03b'').
+   * Une exception est levé lorsque la valeur du paramètre de ligne de commande "''--produce'''" est différente des 4 valeurs possibles.
    *
-   * @param spark
-   * @param appGlobalConfig
-   * @param inputArgs
+   * @param spark Session spark
+   * @param appGlobalConfig La configuration globale chargé depuis le fichier de configuration  '''application.conf'''.
+   * @param inputArgs [[com.littlebigcode.spark.TestDataEngineer.core.InputArgs]] L'argument d'entré de ligne de commande qui permet d'identifier la source de donnée à produire.
    */
   def runApp(spark: SparkSession, appGlobalConfig: AppGlobalConfig, inputArgs: InputArgs): Unit = {
     inputArgs.dataProductionType match {

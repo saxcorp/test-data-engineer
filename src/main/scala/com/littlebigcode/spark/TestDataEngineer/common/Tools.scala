@@ -4,14 +4,14 @@ import com.littlebigcode.spark.TestDataEngineer.model.AppGlobalConfig
 import com.typesafe.config.{Config, ConfigFactory}
 import org.apache.spark.sql.types.{DataType, StructType}
 import scala.io.Source
-import scala.util.Try
 
 object Tools {
 
   /**
+   * Construit un '''org.apache.spark.sql.types.StructType''' via un fichier JSON dans le classpath dont la référence est décrite dans l'argument ['''jsonFileClassPath'''].
    *
-   * @param jsonFileClassPath
-   * @return
+   * @param jsonFileClassPath Localisation dans le classPath du fichier JSON contenant la definition du schema.
+   * @return '''org.apache.spark.sql.types.StructType'''
    */
   def getStructTypeFromClassPathJson(jsonFileClassPath: String) = {
     val url = ClassLoader.getSystemResource(jsonFileClassPath)
@@ -20,22 +20,24 @@ object Tools {
   }
 
   /**
+   * Retourne une chaine de caractère présent dans le [path]. [defaultValue] est retourné lorsque le [path] n'existe pas.
    *
-   * @param c
-   * @param path
-   * @param defaultValue
-   * @return
+   * @param c            [com.typesafe.config]
+   * @param path         Localisation de la propriété extraire.
+   * @param defaultValue Valeur à retourner lorsque le [path] n'existe pas dans la configuration.
+   * @return Valeur contenue dans la propriete identifié par le [path].
    */
   def getConfigStringOrElse(c: Config, path: String, defaultValue: String = ""): String = {
-    Try(c.hasPath(path)).isSuccess match {
+    c.hasPath(path) match {
       case true => c.getString(path)
       case _ => defaultValue
     }
   }
 
   /**
+   * Charge la configuration globale via le fichier application.conf présente dans le classpath.
    *
-   * @return
+   * @return [[com.littlebigcode.spark.TestDataEngineer.model.AppGlobalConfig]]
    */
   def getGlobalConfig() = {
     val conf = ConfigFactory.load()

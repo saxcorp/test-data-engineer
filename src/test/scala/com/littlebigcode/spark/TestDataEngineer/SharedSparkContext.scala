@@ -14,6 +14,7 @@ trait SharedSparkContext {
   val sparkSession = SparkSession
     .builder()
     .appName("SparkSession for unit tests")
+    .config("spark.sql.shuffle.partitions", "1")
     .master("local[*]")
     .getOrCreate()
 

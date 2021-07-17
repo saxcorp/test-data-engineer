@@ -6,11 +6,12 @@ import org.apache.spark.sql.{DataFrame, SaveMode}
 object Exercise02 {
 
   /**
+   * Produit les données de l'exercice 02 et les sauvegarde en parquet. Les données sauvegardées sont retournées dans un DataFrame.
    *
-   * @param appGlobalConfig
-   * @param dfCampagne
-   * @param saveResult
-   * @return
+   * @param appGlobalConfig Configuration globale de l'application provenant du fichier application.conf.
+   * @param dfCampagne Dataframe contenant les données de la compagne.
+   * @param saveResult Si True active la sauvegarde des données produites en parquet. Si non aucune sauvegarde n'est faite.
+   * @return '''org.apache.spark.sql.DataFrame'''
    */
   def produceExercise2(appGlobalConfig: AppGlobalConfig,
                        dfCampagne: DataFrame,

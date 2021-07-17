@@ -34,6 +34,7 @@ dependencies {
     implementation "com.github.scopt:scopt_${scalaMinorVersion}:4.0.1"
     implementation "com.typesafe:config:1.4.1"
 
+    testImplementation "com.github.mrpowers:spark-fast-tests_${scalaMinorVersion}:0.23.0"
     testImplementation "org.scalatest:scalatest_${scalaMinorVersion}:3.2.9"
     testImplementation "org.scalatest:scalatest-funsuite_${scalaMinorVersion}:3.2.9"
     testImplementation "org.scalatestplus:junit-4-13_${scalaMinorVersion}:3.2.9.0"

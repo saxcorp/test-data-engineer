@@ -26,10 +26,11 @@ object Exercise01 {
     .add("JSON", StringType, nullable = true)
 
   /**
+   * Produit les données de l'exercice 01 et les sauvegarde en parquet. Les données sauvegardées sont retournées dans un DataFrame.
    *
-   * @param spark
-   * @param appGlobalConfig
-   * @return
+   * @param spark SparkSession
+   * @param appGlobalConfig Configuration globale de l'application provenant du fichier application.conf.
+   * @return '''org.apache.spark.sql.DataFrame'''
    */
   def produceExercise1(spark: SparkSession, appGlobalConfig: AppGlobalConfig) = {
     val df = spark.read
